@@ -51,27 +51,33 @@ public final class IngameHUD
 		}else
 			textColor = 0xffffff;
 		
-		// title
-		GL11.glPushMatrix();
-		GL11.glScaled(1.33333333, 1.33333333, 1);
-		WMinecraft.getFontRenderer().drawStringWithShadow(
-			"ForgeWurst v" + ForgeWurst.VERSION, 3, 3, textColor);
-		GL11.glPopMatrix();
-		
-		// hack list
-		int y = 19;
-		ArrayList<Hack> hacks = new ArrayList<>();
-		hacks.addAll(hackList.getValues());
-		hacks.sort(Comparator.comparing(Hack::getName));
-		
-		for(Hack hack : hacks)
+		// title (logo display)
+		if(hackList.clickGuiHack.isShowLogo())
 		{
-			if(!hack.isEnabled())
-				continue;
+			GL11.glPushMatrix();
+			GL11.glScaled(1.33333333, 1.33333333, 1);
+			WMinecraft.getFontRenderer().drawStringWithShadow(
+				"ForgeWurst v" + ForgeWurst.VERSION, 3, 3, textColor);
+			GL11.glPopMatrix();
+		}
+		
+		// hack list (feature display)
+		if(hackList.clickGuiHack.isShowHackList())
+		{
+			int y = 19;
+			ArrayList<Hack> hacks = new ArrayList<>();
+			hacks.addAll(hackList.getValues());
+			hacks.sort(Comparator.comparing(Hack::getName));
 			
-			WMinecraft.getFontRenderer()
-				.drawStringWithShadow(hack.getRenderName(), 2, y, textColor);
-			y += 9;
+			for(Hack hack : hacks)
+			{
+				if(!hack.isEnabled())
+				continue;
+				
+				WMinecraft.getFontRenderer()
+					.drawStringWithShadow(hack.getRenderName(), 2, y, textColor);
+				y += 9;
+			}
 		}
 		
 		// pinned windows
