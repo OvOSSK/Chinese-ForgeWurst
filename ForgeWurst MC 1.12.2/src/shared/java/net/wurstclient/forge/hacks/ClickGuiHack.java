@@ -40,6 +40,12 @@ public final class ClickGuiHack extends Hack
 	private final SliderSetting acBlue = new SliderSetting("强调蓝色",
 		"强调蓝色", 16, 0, 255, 1, ValueDisplay.INTEGER);
 	
+	private final CheckboxSetting showLogo = new CheckboxSetting("显示Logo",
+		"在游戏内HUD左上角显示\n"
+			+ "ForgeWurst 标题.", false);
+	private final CheckboxSetting showHackList = new CheckboxSetting("显示功能列表",
+		"在游戏内HUD中显示\n"
+			+ "当前已启用的功能列表.", false);
 	private final CheckboxSetting inventoryButton =
 		new CheckboxSetting("物品栏按钮",
 			"一个在物品栏中让你打开\n"
@@ -59,6 +65,8 @@ public final class ClickGuiHack extends Hack
 		addSetting(acGreen);
 		addSetting(acBlue);
 		addSetting(inventoryButton);
+		addSetting(showLogo);
+		addSetting(showHackList);
 		
 		MinecraftForge.EVENT_BUS.register(new InventoryButtonAdder());
 	}
@@ -100,6 +108,16 @@ public final class ClickGuiHack extends Hack
 	public boolean isInventoryButton()
 	{
 		return inventoryButton.isChecked();
+	}
+	
+	public boolean isShowLogo()
+	{
+		return showLogo.isChecked();
+	}
+	
+	public boolean isShowHackList()
+	{
+		return showHackList.isChecked();
 	}
 	
 	public void setInventoryButton(boolean checked)
