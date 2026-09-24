@@ -8,6 +8,8 @@
 
 在 `ForgeWurst\ForgeWurst MC 1.12.2\`下运行 `gradlew build.bat` 即可. 也可直接运行根目录下的 `build.bat`。
 
+不想自己编译的话，可以直接去 [Releases](../../releases) 下载编译好的 jar。
+
 ## 许可和法律事务
 
 此代码根据 `GNU General Public License v3.` 进行授权。
@@ -28,3 +30,8 @@
 * 在命令中加入了一些实用功能（如SeedDup、IP）
 * 加入了部分功能 (如TpAura、BoatFly等)
 * 将一些只有侵入客户端（原版Wurst有两个版本：一个是侵入原版客户端的，一个是Forge版但已停更）才有的功能移植到了该Forge版本上。
+* 新增LOGO与功能显示开关：打开GUI后，在UI设置窗口中可以随时开关左上角的ForgeWurst标题与已启用功能列表的显示，状态会自动保存。
+
+## 自动构建
+
+本分支配置了GitHub Actions自动构建，推送到master或手动在Actions页面触发时，会自动编译模组并把编译好的jar发布到[Releases](../../releases)，可直接下载使用。
