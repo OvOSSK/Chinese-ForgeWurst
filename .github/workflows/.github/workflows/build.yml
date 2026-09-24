@@ -1,0 +1,32 @@
+name: Build ForgeWurst
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    name: 编译 ForgeWurst (MC 1.12.2)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 JDK 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: 执行构建
+        working-directory: ForgeWurst MC 1.12.2
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon
+
+      - name: 上传构建产物 (jar)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ForgeWurst-jar
+          path: ForgeWurst MC 1.12.2/build/libs/*.jar
