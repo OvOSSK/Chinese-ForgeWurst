@@ -2,7 +2,7 @@
 
 在Minecraft Forge上运行的Wurst作弊客户端。
 
-从 [https://github.com/Wurst-Imperium/ForgeWurst]() 派生，作为独立更新分支.
+从 [[https://github.com/KrisTHL181/Chinese-ForgeWurst]]() 派生，作为独立更新分支.
 
 ## 如何将这个项目编译为.JAR文件
 
